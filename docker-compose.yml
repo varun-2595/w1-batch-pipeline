@@ -46,6 +46,8 @@ services:
       - AIRFLOW__CORE__EXECUTOR=LocalExecutor
       - AIRFLOW__DATABASE__SQL_ALCHEMY_CONN=postgresql+psycopg2://postgres:postgres@postgres:5432/pipeline_db
       - AIRFLOW__CORE__LOAD_EXAMPLES=False
+      - _PIP_ADDITIONAL_REQUIREMENTS=requests beautifulsoup4 pandas pyarrow boto3 sqlalchemy psycopg2-binary
+
     entrypoint: /bin/bash
     command:
       - -c
@@ -60,7 +62,9 @@ services:
   airflow-webserver:
     image: apache/airflow:2.7.1-python3.10
     container_name: pipeline_airflow_webserver
+    command: webserver
     restart: always
+
     depends_on:
       postgres:
         condition: service_healthy
@@ -78,6 +82,8 @@ services:
       - S3_ACCESS_KEY=minioadmin
       - S3_SECRET_KEY=minioadmin
       - S3_BUCKET=raw-data-bucket
+      - _PIP_ADDITIONAL_REQUIREMENTS=requests beautifulsoup4 pandas pyarrow boto3 sqlalchemy psycopg2-binary
+
     volumes:
       - ./dags:/opt/airflow/dags
       - ./src:/opt/airflow/dags/src
@@ -91,7 +97,9 @@ services:
   airflow-scheduler:
     image: apache/airflow:2.7.1-python3.10
     container_name: pipeline_airflow_scheduler
+    command: scheduler
     restart: always
+
     depends_on:
       postgres:
         condition: service_healthy
@@ -107,6 +115,8 @@ services:
       - S3_ACCESS_KEY=minioadmin
       - S3_SECRET_KEY=minioadmin
       - S3_BUCKET=raw-data-bucket
+      - _PIP_ADDITIONAL_REQUIREMENTS=requests beautifulsoup4 pandas pyarrow boto3 sqlalchemy psycopg2-binary
+
     volumes:
       - ./dags:/opt/airflow/dags
       - ./src:/opt/airflow/dags/src
