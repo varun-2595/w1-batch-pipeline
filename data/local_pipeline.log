@@ -1,0 +1,204 @@
+2026-05-25 21:20:18,598 [INFO] LocalPipelineRunner - ================================================================================
+2026-05-25 21:20:18,598 [INFO] LocalPipelineRunner - STARTING LOCAL PIPELINE SIMULATION FOR DATE: 2026-05-25
+2026-05-25 21:20:18,598 [INFO] LocalPipelineRunner - Data Directory: C:\Users\Administrator\.gemini\antigravity\scratch\w1-batch-pipeline\data
+2026-05-25 21:20:18,599 [INFO] LocalPipelineRunner - Database Type: SQLite (sqlite:///C:\Users\Administrator\.gemini\antigravity\scratch\w1-batch-pipeline\data\local_pipeline.db)
+2026-05-25 21:20:18,599 [INFO] LocalPipelineRunner - ================================================================================
+
+2026-05-25 21:20:18,769 [INFO] src.db_loader - Initializing database schema on sqlite
+2026-05-25 21:20:18,803 [INFO] src.db_loader - Database tables initialized.
+2026-05-25 21:20:18,812 [INFO] src.db_loader - Logged stage 'dag_start' with status 'Success' (records: 0)
+2026-05-25 21:20:18,812 [INFO] LocalPipelineRunner - 
+============================================================
+[TASK RUN] Starting task: 1. scrape
+============================================================
+2026-05-25 21:20:18,812 [INFO] src.scraper - Starting Books scraping from https://books.toscrape.com/
+2026-05-25 21:20:20,494 [INFO] src.scraper - Found 50 categories. Scraping first 5.
+2026-05-25 21:20:20,494 [INFO] src.scraper - Scraping Category (1/5): Travel
+2026-05-25 21:20:22,023 [INFO] src.scraper - Scraping Category (2/5): Mystery
+2026-05-25 21:20:25,564 [INFO] src.scraper - Scraping Category (3/5): Historical Fiction
+2026-05-25 21:20:28,886 [INFO] src.scraper - Scraping Category (4/5): Sequential Art
+2026-05-25 21:20:36,001 [INFO] src.scraper - Scraping Category (5/5): Classics
+2026-05-25 21:20:37,755 [INFO] src.scraper - Completed Books scraping. Extracted 163 records.
+2026-05-25 21:20:37,760 [INFO] src.scraper - Starting Quotes scraping from https://quotes.toscrape.com/
+2026-05-25 21:20:37,761 [INFO] src.scraper - Scraping Quotes Page 1/3: https://quotes.toscrape.com/
+2026-05-25 21:20:39,302 [INFO] src.scraper - Scraping Quotes Page 2/3: https://quotes.toscrape.com/page/2/
+2026-05-25 21:20:40,793 [INFO] src.scraper - Scraping Quotes Page 3/3: https://quotes.toscrape.com/page/3/
+2026-05-25 21:20:42,319 [INFO] src.scraper - Completed Quotes scraping. Extracted 30 records.
+2026-05-25 21:20:42,321 [INFO] src.scraper - Saved raw books data to C:\Users\Administrator\.gemini\antigravity\scratch\w1-batch-pipeline\data\raw\books_2026-05-25.json
+2026-05-25 21:20:42,322 [INFO] src.scraper - Saved raw quotes data to C:\Users\Administrator\.gemini\antigravity\scratch\w1-batch-pipeline\data\raw\quotes_2026-05-25.json
+2026-05-25 21:20:42,322 [INFO] LocalPipelineRunner - [TASK SUCCESS] Completed: 1. scrape in 23.51s
+2026-05-25 21:20:42,322 [INFO] LocalPipelineRunner - Results: {'books_scraped': 163, 'quotes_scraped': 30}
+2026-05-25 21:20:42,322 [INFO] LocalPipelineRunner - ------------------------------------------------------------
+
+2026-05-25 21:20:42,322 [INFO] LocalPipelineRunner - 
+============================================================
+[TASK RUN] Starting task: 2. validate
+============================================================
+2026-05-25 21:20:42,322 [INFO] src.validator - Starting Books validation for C:\Users\Administrator\.gemini\antigravity\scratch\w1-batch-pipeline\data\raw\books_2026-05-25.json
+2026-05-25 21:20:42,354 [INFO] src.validator - Books validation complete. Clean: 163, Rejected: 0
+2026-05-25 21:20:42,355 [INFO] src.validator - Starting Quotes validation for C:\Users\Administrator\.gemini\antigravity\scratch\w1-batch-pipeline\data\raw\quotes_2026-05-25.json
+2026-05-25 21:20:42,372 [WARNING] src.validator - Quarantined 1 quotes to C:\Users\Administrator\.gemini\antigravity\scratch\w1-batch-pipeline\data\quarantine\rejected_quotes_2026-05-25.csv
+2026-05-25 21:20:42,372 [INFO] src.validator - Quotes validation complete. Clean: 29, Rejected: 1
+2026-05-25 21:20:42,372 [INFO] LocalPipelineRunner - [TASK SUCCESS] Completed: 2. validate in 0.05s
+2026-05-25 21:20:42,372 [INFO] LocalPipelineRunner - Results: {'clean_books': 163, 'clean_quotes': 29}
+2026-05-25 21:20:42,372 [INFO] LocalPipelineRunner - ------------------------------------------------------------
+
+2026-05-25 21:20:42,372 [INFO] LocalPipelineRunner - 
+============================================================
+[TASK RUN] Starting task: 3. upload_to_s3
+============================================================
+2026-05-25 21:20:42,372 [INFO] src.validator - Starting Books validation for C:\Users\Administrator\.gemini\antigravity\scratch\w1-batch-pipeline\data\raw\books_2026-05-25.json
+2026-05-25 21:20:42,374 [INFO] src.validator - Books validation complete. Clean: 163, Rejected: 0
+2026-05-25 21:20:42,375 [INFO] src.validator - Starting Quotes validation for C:\Users\Administrator\.gemini\antigravity\scratch\w1-batch-pipeline\data\raw\quotes_2026-05-25.json
+2026-05-25 21:20:42,376 [WARNING] src.validator - Quarantined 1 quotes to C:\Users\Administrator\.gemini\antigravity\scratch\w1-batch-pipeline\data\quarantine\rejected_quotes_2026-05-25.csv
+2026-05-25 21:20:42,376 [INFO] src.validator - Quotes validation complete. Clean: 29, Rejected: 1
+2026-05-25 21:20:42,377 [INFO] src.s3_uploader - Starting upload of clean data to S3 storage
+2026-05-25 21:20:42,553 [INFO] src.s3_uploader - [Local Simulation] Saved parquet to C:\Users\Administrator\.gemini\antigravity\scratch\w1-batch-pipeline\data\s3_bucket\books\scrape_date=2026-05-25\books.parquet
+2026-05-25 21:20:42,557 [INFO] src.s3_uploader - [Local Simulation] Saved parquet to C:\Users\Administrator\.gemini\antigravity\scratch\w1-batch-pipeline\data\s3_bucket\quotes\scrape_date=2026-05-25\quotes.parquet
+2026-05-25 21:20:42,557 [INFO] LocalPipelineRunner - [TASK SUCCESS] Completed: 3. upload_to_s3 in 0.18s
+2026-05-25 21:20:42,557 [INFO] LocalPipelineRunner - Results: {'books_parquet_path': 'C:\\Users\\Administrator\\.gemini\\antigravity\\scratch\\w1-batch-pipeline\\data\\s3_bucket\\books\\scrape_date=2026-05-25\\books.parquet', 'quotes_parquet_path': 'C:\\Users\\Administrator\\.gemini\\antigravity\\scratch\\w1-batch-pipeline\\data\\s3_bucket\\quotes\\scrape_date=2026-05-25\\quotes.parquet'}
+2026-05-25 21:20:42,557 [INFO] LocalPipelineRunner - ------------------------------------------------------------
+
+2026-05-25 21:20:42,557 [INFO] LocalPipelineRunner - 
+============================================================
+[TASK RUN] Starting task: 4. load_pg (SQLite)
+============================================================
+2026-05-25 21:20:42,557 [INFO] src.db_loader - Initializing database schema on sqlite
+2026-05-25 21:20:42,559 [INFO] src.db_loader - Database tables initialized.
+2026-05-25 21:20:42,560 [INFO] src.db_loader - Loading Parquet data into raw_books for date 2026-05-25
+2026-05-25 21:20:42,851 [INFO] src.db_loader - Deleted existing records in raw_books for date 2026-05-25 to prevent duplicates.
+2026-05-25 21:20:42,864 [INFO] src.db_loader - Successfully loaded 163 records into raw_books.
+2026-05-25 21:20:42,872 [INFO] src.db_loader - Logged stage 'load_books' with status 'Success' (records: 163)
+2026-05-25 21:20:42,872 [INFO] src.db_loader - Loading Parquet data into raw_quotes for date 2026-05-25
+2026-05-25 21:20:42,884 [INFO] src.db_loader - Deleted existing records in raw_quotes for date 2026-05-25 to prevent duplicates.
+2026-05-25 21:20:42,895 [INFO] src.db_loader - Successfully loaded 29 records into raw_quotes.
+2026-05-25 21:20:42,902 [INFO] src.db_loader - Logged stage 'load_quotes' with status 'Success' (records: 29)
+2026-05-25 21:20:42,903 [INFO] LocalPipelineRunner - [TASK SUCCESS] Completed: 4. load_pg (SQLite) in 0.35s
+2026-05-25 21:20:42,903 [INFO] LocalPipelineRunner - Results: {'books_loaded': 163, 'quotes_loaded': 29}
+2026-05-25 21:20:42,903 [INFO] LocalPipelineRunner - ------------------------------------------------------------
+
+2026-05-25 21:20:42,903 [INFO] LocalPipelineRunner - 
+============================================================
+[TASK RUN] Starting task: 5. transform (Views & Report)
+============================================================
+2026-05-25 21:20:42,903 [INFO] src.transformer - Starting database transformations to build analytical views
+2026-05-25 21:20:42,904 [INFO] src.transformer - Creating analytical view: view_books_cleaned
+2026-05-25 21:20:42,912 [INFO] src.transformer - Creating analytical view: view_quotes_cleaned
+2026-05-25 21:20:42,919 [INFO] src.transformer - Creating analytical view: view_category_metrics
+2026-05-25 21:20:42,928 [INFO] src.transformer - Creating analytical view: view_author_metrics
+2026-05-25 21:20:42,946 [INFO] src.db_loader - Logged stage 'transform' with status 'Success' (records: 4)
+2026-05-25 21:20:42,947 [INFO] src.transformer - Database transformations completed successfully.
+2026-05-25 21:20:42,947 [INFO] src.reporter - Generating HTML summary report
+2026-05-25 21:20:42,980 [INFO] src.reporter - Summary report generated at: C:\Users\Administrator\.gemini\antigravity\scratch\w1-batch-pipeline\data\reports\summary_2026-05-25.html
+2026-05-25 21:20:42,987 [INFO] src.db_loader - Logged stage 'report' with status 'Success' (records: 1)
+2026-05-25 21:20:42,987 [INFO] LocalPipelineRunner - [TASK SUCCESS] Completed: 5. transform (Views & Report) in 0.08s
+2026-05-25 21:20:42,987 [INFO] LocalPipelineRunner - Results: {'html_report_path': 'C:\\Users\\Administrator\\.gemini\\antigravity\\scratch\\w1-batch-pipeline\\data\\reports\\summary_2026-05-25.html'}
+2026-05-25 21:20:42,987 [INFO] LocalPipelineRunner - ------------------------------------------------------------
+
+2026-05-25 21:20:42,994 [INFO] src.db_loader - Logged stage 'dag_end' with status 'Success' (records: 0)
+2026-05-25 21:20:42,994 [INFO] LocalPipelineRunner - ================================================================================
+2026-05-25 21:20:42,995 [INFO] LocalPipelineRunner - LOCAL PIPELINE RUN COMPLETED SUCCESSFULLY in 24.39s
+2026-05-25 21:20:42,995 [INFO] LocalPipelineRunner - You can view the HTML report here: C:\Users\Administrator\.gemini\antigravity\scratch\w1-batch-pipeline\data\reports\summary_2026-05-25.html
+2026-05-25 21:20:42,995 [INFO] LocalPipelineRunner - ================================================================================
+2026-05-25 21:20:55,137 [INFO] LocalPipelineRunner - ================================================================================
+2026-05-25 21:20:55,137 [INFO] LocalPipelineRunner - STARTING LOCAL PIPELINE SIMULATION FOR DATE: 2026-05-25
+2026-05-25 21:20:55,137 [INFO] LocalPipelineRunner - Data Directory: C:\Users\Administrator\.gemini\antigravity\scratch\w1-batch-pipeline\data
+2026-05-25 21:20:55,137 [INFO] LocalPipelineRunner - Database Type: SQLite (sqlite:///C:\Users\Administrator\.gemini\antigravity\scratch\w1-batch-pipeline\data\local_pipeline.db)
+2026-05-25 21:20:55,137 [INFO] LocalPipelineRunner - ================================================================================
+
+2026-05-25 21:20:55,148 [INFO] src.db_loader - Initializing database schema on sqlite
+2026-05-25 21:20:55,152 [INFO] src.db_loader - Database tables initialized.
+2026-05-25 21:20:55,160 [INFO] src.db_loader - Logged stage 'dag_start' with status 'Success' (records: 0)
+2026-05-25 21:20:55,160 [INFO] LocalPipelineRunner - 
+============================================================
+[TASK RUN] Starting task: 1. scrape
+============================================================
+2026-05-25 21:20:55,160 [INFO] src.scraper - Starting Books scraping from https://books.toscrape.com/
+2026-05-25 21:20:56,763 [INFO] src.scraper - Found 50 categories. Scraping first 5.
+2026-05-25 21:20:56,763 [INFO] src.scraper - Scraping Category (1/5): Travel
+2026-05-25 21:20:58,255 [INFO] src.scraper - Scraping Category (2/5): Mystery
+2026-05-25 21:21:01,842 [INFO] src.scraper - Scraping Category (3/5): Historical Fiction
+2026-05-25 21:21:05,162 [INFO] src.scraper - Scraping Category (4/5): Sequential Art
+2026-05-25 21:21:12,385 [INFO] src.scraper - Scraping Category (5/5): Classics
+2026-05-25 21:21:14,167 [INFO] src.scraper - Completed Books scraping. Extracted 163 records.
+2026-05-25 21:21:14,168 [INFO] src.scraper - Starting Quotes scraping from https://quotes.toscrape.com/
+2026-05-25 21:21:14,168 [INFO] src.scraper - Scraping Quotes Page 1/3: https://quotes.toscrape.com/
+2026-05-25 21:21:15,684 [INFO] src.scraper - Scraping Quotes Page 2/3: https://quotes.toscrape.com/page/2/
+2026-05-25 21:21:17,167 [INFO] src.scraper - Scraping Quotes Page 3/3: https://quotes.toscrape.com/page/3/
+2026-05-25 21:21:18,668 [INFO] src.scraper - Completed Quotes scraping. Extracted 30 records.
+2026-05-25 21:21:18,671 [INFO] src.scraper - Saved raw books data to C:\Users\Administrator\.gemini\antigravity\scratch\w1-batch-pipeline\data\raw\books_2026-05-25.json
+2026-05-25 21:21:18,672 [INFO] src.scraper - Saved raw quotes data to C:\Users\Administrator\.gemini\antigravity\scratch\w1-batch-pipeline\data\raw\quotes_2026-05-25.json
+2026-05-25 21:21:18,673 [INFO] LocalPipelineRunner - [TASK SUCCESS] Completed: 1. scrape in 23.51s
+2026-05-25 21:21:18,673 [INFO] LocalPipelineRunner - Results: {'books_scraped': 163, 'quotes_scraped': 30}
+2026-05-25 21:21:18,673 [INFO] LocalPipelineRunner - ------------------------------------------------------------
+
+2026-05-25 21:21:18,673 [INFO] LocalPipelineRunner - 
+============================================================
+[TASK RUN] Starting task: 2. validate
+============================================================
+2026-05-25 21:21:18,674 [INFO] src.validator - Starting Books validation for C:\Users\Administrator\.gemini\antigravity\scratch\w1-batch-pipeline\data\raw\books_2026-05-25.json
+2026-05-25 21:21:18,688 [INFO] src.validator - Books validation complete. Clean: 163, Rejected: 0
+2026-05-25 21:21:18,688 [INFO] src.validator - Starting Quotes validation for C:\Users\Administrator\.gemini\antigravity\scratch\w1-batch-pipeline\data\raw\quotes_2026-05-25.json
+2026-05-25 21:21:18,699 [WARNING] src.validator - Quarantined 1 quotes to C:\Users\Administrator\.gemini\antigravity\scratch\w1-batch-pipeline\data\quarantine\rejected_quotes_2026-05-25.csv
+2026-05-25 21:21:18,699 [INFO] src.validator - Quotes validation complete. Clean: 29, Rejected: 1
+2026-05-25 21:21:18,699 [INFO] LocalPipelineRunner - [TASK SUCCESS] Completed: 2. validate in 0.03s
+2026-05-25 21:21:18,699 [INFO] LocalPipelineRunner - Results: {'clean_books': 163, 'clean_quotes': 29}
+2026-05-25 21:21:18,699 [INFO] LocalPipelineRunner - ------------------------------------------------------------
+
+2026-05-25 21:21:18,699 [INFO] LocalPipelineRunner - 
+============================================================
+[TASK RUN] Starting task: 3. upload_to_s3
+============================================================
+2026-05-25 21:21:18,699 [INFO] src.validator - Starting Books validation for C:\Users\Administrator\.gemini\antigravity\scratch\w1-batch-pipeline\data\raw\books_2026-05-25.json
+2026-05-25 21:21:18,701 [INFO] src.validator - Books validation complete. Clean: 163, Rejected: 0
+2026-05-25 21:21:18,702 [INFO] src.validator - Starting Quotes validation for C:\Users\Administrator\.gemini\antigravity\scratch\w1-batch-pipeline\data\raw\quotes_2026-05-25.json
+2026-05-25 21:21:18,703 [WARNING] src.validator - Quarantined 1 quotes to C:\Users\Administrator\.gemini\antigravity\scratch\w1-batch-pipeline\data\quarantine\rejected_quotes_2026-05-25.csv
+2026-05-25 21:21:18,703 [INFO] src.validator - Quotes validation complete. Clean: 29, Rejected: 1
+2026-05-25 21:21:18,703 [INFO] src.s3_uploader - Starting upload of clean data to S3 storage
+2026-05-25 21:21:18,718 [INFO] src.s3_uploader - [Local Simulation] Saved parquet to C:\Users\Administrator\.gemini\antigravity\scratch\w1-batch-pipeline\data\s3_bucket\books\scrape_date=2026-05-25\books.parquet
+2026-05-25 21:21:18,721 [INFO] src.s3_uploader - [Local Simulation] Saved parquet to C:\Users\Administrator\.gemini\antigravity\scratch\w1-batch-pipeline\data\s3_bucket\quotes\scrape_date=2026-05-25\quotes.parquet
+2026-05-25 21:21:18,721 [INFO] LocalPipelineRunner - [TASK SUCCESS] Completed: 3. upload_to_s3 in 0.02s
+2026-05-25 21:21:18,721 [INFO] LocalPipelineRunner - Results: {'books_parquet_path': 'C:\\Users\\Administrator\\.gemini\\antigravity\\scratch\\w1-batch-pipeline\\data\\s3_bucket\\books\\scrape_date=2026-05-25\\books.parquet', 'quotes_parquet_path': 'C:\\Users\\Administrator\\.gemini\\antigravity\\scratch\\w1-batch-pipeline\\data\\s3_bucket\\quotes\\scrape_date=2026-05-25\\quotes.parquet'}
+2026-05-25 21:21:18,722 [INFO] LocalPipelineRunner - ------------------------------------------------------------
+
+2026-05-25 21:21:18,722 [INFO] LocalPipelineRunner - 
+============================================================
+[TASK RUN] Starting task: 4. load_pg (SQLite)
+============================================================
+2026-05-25 21:21:18,722 [INFO] src.db_loader - Initializing database schema on sqlite
+2026-05-25 21:21:18,724 [INFO] src.db_loader - Database tables initialized.
+2026-05-25 21:21:18,724 [INFO] src.db_loader - Loading Parquet data into raw_books for date 2026-05-25
+2026-05-25 21:21:18,751 [INFO] src.db_loader - Deleted existing records in raw_books for date 2026-05-25 to prevent duplicates.
+2026-05-25 21:21:18,770 [INFO] src.db_loader - Successfully loaded 163 records into raw_books.
+2026-05-25 21:21:18,777 [INFO] src.db_loader - Logged stage 'load_books' with status 'Success' (records: 163)
+2026-05-25 21:21:18,777 [INFO] src.db_loader - Loading Parquet data into raw_quotes for date 2026-05-25
+2026-05-25 21:21:18,783 [INFO] src.db_loader - Deleted existing records in raw_quotes for date 2026-05-25 to prevent duplicates.
+2026-05-25 21:21:18,800 [INFO] src.db_loader - Successfully loaded 29 records into raw_quotes.
+2026-05-25 21:21:18,807 [INFO] src.db_loader - Logged stage 'load_quotes' with status 'Success' (records: 29)
+2026-05-25 21:21:18,807 [INFO] LocalPipelineRunner - [TASK SUCCESS] Completed: 4. load_pg (SQLite) in 0.09s
+2026-05-25 21:21:18,807 [INFO] LocalPipelineRunner - Results: {'books_loaded': 163, 'quotes_loaded': 29}
+2026-05-25 21:21:18,807 [INFO] LocalPipelineRunner - ------------------------------------------------------------
+
+2026-05-25 21:21:18,807 [INFO] LocalPipelineRunner - 
+============================================================
+[TASK RUN] Starting task: 5. transform (Views & Report)
+============================================================
+2026-05-25 21:21:18,807 [INFO] src.transformer - Starting database transformations to build analytical views
+2026-05-25 21:21:18,809 [INFO] src.transformer - Creating analytical view: view_books_cleaned
+2026-05-25 21:21:18,824 [INFO] src.transformer - Creating analytical view: view_quotes_cleaned
+2026-05-25 21:21:18,839 [INFO] src.transformer - Creating analytical view: view_category_metrics
+2026-05-25 21:21:18,853 [INFO] src.transformer - Creating analytical view: view_author_metrics
+2026-05-25 21:21:18,875 [INFO] src.db_loader - Logged stage 'transform' with status 'Success' (records: 4)
+2026-05-25 21:21:18,875 [INFO] src.transformer - Database transformations completed successfully.
+2026-05-25 21:21:18,875 [INFO] src.reporter - Generating HTML summary report
+2026-05-25 21:21:18,890 [INFO] src.reporter - Summary report generated at: C:\Users\Administrator\.gemini\antigravity\scratch\w1-batch-pipeline\data\reports\summary_2026-05-25.html
+2026-05-25 21:21:18,898 [INFO] src.db_loader - Logged stage 'report' with status 'Success' (records: 1)
+2026-05-25 21:21:18,898 [INFO] LocalPipelineRunner - [TASK SUCCESS] Completed: 5. transform (Views & Report) in 0.09s
+2026-05-25 21:21:18,898 [INFO] LocalPipelineRunner - Results: {'html_report_path': 'C:\\Users\\Administrator\\.gemini\\antigravity\\scratch\\w1-batch-pipeline\\data\\reports\\summary_2026-05-25.html'}
+2026-05-25 21:21:18,898 [INFO] LocalPipelineRunner - ------------------------------------------------------------
+
+2026-05-25 21:21:18,905 [INFO] src.db_loader - Logged stage 'dag_end' with status 'Success' (records: 0)
+2026-05-25 21:21:18,905 [INFO] LocalPipelineRunner - ================================================================================
+2026-05-25 21:21:18,905 [INFO] LocalPipelineRunner - LOCAL PIPELINE RUN COMPLETED SUCCESSFULLY in 23.76s
+2026-05-25 21:21:18,905 [INFO] LocalPipelineRunner - You can view the HTML report here: C:\Users\Administrator\.gemini\antigravity\scratch\w1-batch-pipeline\data\reports\summary_2026-05-25.html
+2026-05-25 21:21:18,906 [INFO] LocalPipelineRunner - ================================================================================

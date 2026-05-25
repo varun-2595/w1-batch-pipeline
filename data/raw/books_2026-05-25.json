@@ -1,0 +1,980 @@
+[
+  {
+    "title": "It's Only the Himalayas",
+    "price": 45.17,
+    "rating": 2,
+    "category": "Travel"
+  },
+  {
+    "title": "Full Moon over Noah’s Ark: An Odyssey to Mount Ararat and Beyond",
+    "price": 49.43,
+    "rating": 4,
+    "category": "Travel"
+  },
+  {
+    "title": "See America: A Celebration of Our National Parks & Treasured Sites",
+    "price": 48.87,
+    "rating": 3,
+    "category": "Travel"
+  },
+  {
+    "title": "Vagabonding: An Uncommon Guide to the Art of Long-Term World Travel",
+    "price": 36.94,
+    "rating": 2,
+    "category": "Travel"
+  },
+  {
+    "title": "Under the Tuscan Sun",
+    "price": 37.33,
+    "rating": 3,
+    "category": "Travel"
+  },
+  {
+    "title": "A Summer In Europe",
+    "price": 44.34,
+    "rating": 2,
+    "category": "Travel"
+  },
+  {
+    "title": "The Great Railway Bazaar",
+    "price": 30.54,
+    "rating": 1,
+    "category": "Travel"
+  },
+  {
+    "title": "A Year in Provence (Provence #1)",
+    "price": 56.88,
+    "rating": 4,
+    "category": "Travel"
+  },
+  {
+    "title": "The Road to Little Dribbling: Adventures of an American in Britain (Notes From a Small Island #2)",
+    "price": 23.21,
+    "rating": 1,
+    "category": "Travel"
+  },
+  {
+    "title": "Neither Here nor There: Travels in Europe",
+    "price": 38.95,
+    "rating": 3,
+    "category": "Travel"
+  },
+  {
+    "title": "1,000 Places to See Before You Die",
+    "price": 26.08,
+    "rating": 5,
+    "category": "Travel"
+  },
+  {
+    "title": "Sharp Objects",
+    "price": 47.82,
+    "rating": 4,
+    "category": "Mystery"
+  },
+  {
+    "title": "In a Dark, Dark Wood",
+    "price": 19.63,
+    "rating": 1,
+    "category": "Mystery"
+  },
+  {
+    "title": "The Past Never Ends",
+    "price": 56.5,
+    "rating": 4,
+    "category": "Mystery"
+  },
+  {
+    "title": "A Murder in Time",
+    "price": 16.64,
+    "rating": 1,
+    "category": "Mystery"
+  },
+  {
+    "title": "The Murder of Roger Ackroyd (Hercule Poirot #4)",
+    "price": 44.1,
+    "rating": 4,
+    "category": "Mystery"
+  },
+  {
+    "title": "The Last Mile (Amos Decker #2)",
+    "price": 54.21,
+    "rating": 2,
+    "category": "Mystery"
+  },
+  {
+    "title": "That Darkness (Gardiner and Renner #1)",
+    "price": 13.92,
+    "rating": 1,
+    "category": "Mystery"
+  },
+  {
+    "title": "Tastes Like Fear (DI Marnie Rome #3)",
+    "price": 10.69,
+    "rating": 1,
+    "category": "Mystery"
+  },
+  {
+    "title": "A Time of Torment (Charlie Parker #14)",
+    "price": 48.35,
+    "rating": 5,
+    "category": "Mystery"
+  },
+  {
+    "title": "A Study in Scarlet (Sherlock Holmes #1)",
+    "price": 16.73,
+    "rating": 2,
+    "category": "Mystery"
+  },
+  {
+    "title": "Poisonous (Max Revere Novels #3)",
+    "price": 26.8,
+    "rating": 3,
+    "category": "Mystery"
+  },
+  {
+    "title": "Murder at the 42nd Street Library (Raymond Ambler #1)",
+    "price": 54.36,
+    "rating": 4,
+    "category": "Mystery"
+  },
+  {
+    "title": "Most Wanted",
+    "price": 35.28,
+    "rating": 3,
+    "category": "Mystery"
+  },
+  {
+    "title": "Hide Away (Eve Duncan #20)",
+    "price": 11.84,
+    "rating": 1,
+    "category": "Mystery"
+  },
+  {
+    "title": "Boar Island (Anna Pigeon #19)",
+    "price": 59.48,
+    "rating": 3,
+    "category": "Mystery"
+  },
+  {
+    "title": "The Widow",
+    "price": 27.26,
+    "rating": 2,
+    "category": "Mystery"
+  },
+  {
+    "title": "Playing with Fire",
+    "price": 13.71,
+    "rating": 3,
+    "category": "Mystery"
+  },
+  {
+    "title": "What Happened on Beale Street (Secrets of the South Mysteries #2)",
+    "price": 25.37,
+    "rating": 5,
+    "category": "Mystery"
+  },
+  {
+    "title": "The Bachelor Girl's Guide to Murder (Herringford and Watts Mysteries #1)",
+    "price": 52.3,
+    "rating": 5,
+    "category": "Mystery"
+  },
+  {
+    "title": "Delivering the Truth (Quaker Midwife Mystery #1)",
+    "price": 20.89,
+    "rating": 4,
+    "category": "Mystery"
+  },
+  {
+    "title": "The Mysterious Affair at Styles (Hercule Poirot #1)",
+    "price": 24.8,
+    "rating": 4,
+    "category": "Mystery"
+  },
+  {
+    "title": "In the Woods (Dublin Murder Squad #1)",
+    "price": 38.38,
+    "rating": 2,
+    "category": "Mystery"
+  },
+  {
+    "title": "The Silkworm (Cormoran Strike #2)",
+    "price": 23.05,
+    "rating": 5,
+    "category": "Mystery"
+  },
+  {
+    "title": "The Exiled",
+    "price": 43.45,
+    "rating": 3,
+    "category": "Mystery"
+  },
+  {
+    "title": "The Cuckoo's Calling (Cormoran Strike #1)",
+    "price": 19.21,
+    "rating": 1,
+    "category": "Mystery"
+  },
+  {
+    "title": "Extreme Prey (Lucas Davenport #26)",
+    "price": 25.4,
+    "rating": 3,
+    "category": "Mystery"
+  },
+  {
+    "title": "Career of Evil (Cormoran Strike #3)",
+    "price": 24.72,
+    "rating": 2,
+    "category": "Mystery"
+  },
+  {
+    "title": "The No. 1 Ladies' Detective Agency (No. 1 Ladies' Detective Agency #1)",
+    "price": 57.7,
+    "rating": 4,
+    "category": "Mystery"
+  },
+  {
+    "title": "The Girl You Lost",
+    "price": 12.29,
+    "rating": 5,
+    "category": "Mystery"
+  },
+  {
+    "title": "The Girl In The Ice (DCI Erika Foster #1)",
+    "price": 15.85,
+    "rating": 3,
+    "category": "Mystery"
+  },
+  {
+    "title": "Blood Defense (Samantha Brinkman #1)",
+    "price": 20.3,
+    "rating": 3,
+    "category": "Mystery"
+  },
+  {
+    "title": "1st to Die (Women's Murder Club #1)",
+    "price": 53.98,
+    "rating": 1,
+    "category": "Mystery"
+  },
+  {
+    "title": "Tipping the Velvet",
+    "price": 53.74,
+    "rating": 1,
+    "category": "Historical Fiction"
+  },
+  {
+    "title": "Forever and Forever: The Courtship of Henry Longfellow and Fanny Appleton",
+    "price": 29.69,
+    "rating": 3,
+    "category": "Historical Fiction"
+  },
+  {
+    "title": "A Flight of Arrows (The Pathfinders #2)",
+    "price": 55.53,
+    "rating": 5,
+    "category": "Historical Fiction"
+  },
+  {
+    "title": "The House by the Lake",
+    "price": 36.95,
+    "rating": 1,
+    "category": "Historical Fiction"
+  },
+  {
+    "title": "Mrs. Houdini",
+    "price": 30.25,
+    "rating": 5,
+    "category": "Historical Fiction"
+  },
+  {
+    "title": "The Marriage of Opposites",
+    "price": 28.08,
+    "rating": 4,
+    "category": "Historical Fiction"
+  },
+  {
+    "title": "Glory over Everything: Beyond The Kitchen House",
+    "price": 45.84,
+    "rating": 3,
+    "category": "Historical Fiction"
+  },
+  {
+    "title": "Love, Lies and Spies",
+    "price": 20.55,
+    "rating": 2,
+    "category": "Historical Fiction"
+  },
+  {
+    "title": "A Paris Apartment",
+    "price": 39.01,
+    "rating": 4,
+    "category": "Historical Fiction"
+  },
+  {
+    "title": "Lilac Girls",
+    "price": 17.28,
+    "rating": 2,
+    "category": "Historical Fiction"
+  },
+  {
+    "title": "The Constant Princess (The Tudor Court #1)",
+    "price": 16.62,
+    "rating": 3,
+    "category": "Historical Fiction"
+  },
+  {
+    "title": "The Invention of Wings",
+    "price": 37.34,
+    "rating": 1,
+    "category": "Historical Fiction"
+  },
+  {
+    "title": "World Without End (The Pillars of the Earth #2)",
+    "price": 32.97,
+    "rating": 4,
+    "category": "Historical Fiction"
+  },
+  {
+    "title": "The Passion of Dolssa",
+    "price": 28.32,
+    "rating": 5,
+    "category": "Historical Fiction"
+  },
+  {
+    "title": "Girl With a Pearl Earring",
+    "price": 26.77,
+    "rating": 1,
+    "category": "Historical Fiction"
+  },
+  {
+    "title": "Voyager (Outlander #3)",
+    "price": 21.07,
+    "rating": 5,
+    "category": "Historical Fiction"
+  },
+  {
+    "title": "The Red Tent",
+    "price": 35.66,
+    "rating": 5,
+    "category": "Historical Fiction"
+  },
+  {
+    "title": "The Last Painting of Sara de Vos",
+    "price": 55.55,
+    "rating": 2,
+    "category": "Historical Fiction"
+  },
+  {
+    "title": "The Guernsey Literary and Potato Peel Pie Society",
+    "price": 49.53,
+    "rating": 1,
+    "category": "Historical Fiction"
+  },
+  {
+    "title": "Girl in the Blue Coat",
+    "price": 46.83,
+    "rating": 2,
+    "category": "Historical Fiction"
+  },
+  {
+    "title": "Between Shades of Gray",
+    "price": 20.79,
+    "rating": 5,
+    "category": "Historical Fiction"
+  },
+  {
+    "title": "While You Were Mine",
+    "price": 41.32,
+    "rating": 5,
+    "category": "Historical Fiction"
+  },
+  {
+    "title": "The Secret Healer",
+    "price": 34.56,
+    "rating": 3,
+    "category": "Historical Fiction"
+  },
+  {
+    "title": "Starlark",
+    "price": 25.83,
+    "rating": 3,
+    "category": "Historical Fiction"
+  },
+  {
+    "title": "Lost Among the Living",
+    "price": 27.7,
+    "rating": 4,
+    "category": "Historical Fiction"
+  },
+  {
+    "title": "A Spy's Devotion (The Regency Spies of London #1)",
+    "price": 16.97,
+    "rating": 5,
+    "category": "Historical Fiction"
+  },
+  {
+    "title": "Scott Pilgrim's Precious Little Life (Scott Pilgrim #1)",
+    "price": 52.29,
+    "rating": 5,
+    "category": "Sequential Art"
+  },
+  {
+    "title": "Tsubasa: WoRLD CHRoNiCLE 2 (Tsubasa WoRLD CHRoNiCLE #2)",
+    "price": 16.28,
+    "rating": 1,
+    "category": "Sequential Art"
+  },
+  {
+    "title": "This One Summer",
+    "price": 19.49,
+    "rating": 4,
+    "category": "Sequential Art"
+  },
+  {
+    "title": "The Nameless City (The Nameless City #1)",
+    "price": 38.16,
+    "rating": 4,
+    "category": "Sequential Art"
+  },
+  {
+    "title": "Saga, Volume 5 (Saga (Collected Editions) #5)",
+    "price": 51.04,
+    "rating": 2,
+    "category": "Sequential Art"
+  },
+  {
+    "title": "Rat Queens, Vol. 3: Demons (Rat Queens (Collected Editions) #11-15)",
+    "price": 50.4,
+    "rating": 3,
+    "category": "Sequential Art"
+  },
+  {
+    "title": "Princess Jellyfish 2-in-1 Omnibus, Vol. 01 (Princess Jellyfish 2-in-1 Omnibus #1)",
+    "price": 13.61,
+    "rating": 5,
+    "category": "Sequential Art"
+  },
+  {
+    "title": "Pop Gun War, Volume 1: Gift",
+    "price": 18.97,
+    "rating": 1,
+    "category": "Sequential Art"
+  },
+  {
+    "title": "Patience",
+    "price": 10.16,
+    "rating": 3,
+    "category": "Sequential Art"
+  },
+  {
+    "title": "Outcast, Vol. 1: A Darkness Surrounds Him (Outcast #1)",
+    "price": 15.44,
+    "rating": 4,
+    "category": "Sequential Art"
+  },
+  {
+    "title": "orange: The Complete Collection 1 (orange: The Complete Collection #1)",
+    "price": 48.41,
+    "rating": 1,
+    "category": "Sequential Art"
+  },
+  {
+    "title": "Lumberjanes, Vol. 2: Friendship to the Max (Lumberjanes #5-8)",
+    "price": 46.91,
+    "rating": 2,
+    "category": "Sequential Art"
+  },
+  {
+    "title": "Lumberjanes, Vol. 1: Beware the Kitten Holy (Lumberjanes #1-4)",
+    "price": 45.61,
+    "rating": 3,
+    "category": "Sequential Art"
+  },
+  {
+    "title": "Lumberjanes Vol. 3: A Terrible Plan (Lumberjanes #9-12)",
+    "price": 19.92,
+    "rating": 2,
+    "category": "Sequential Art"
+  },
+  {
+    "title": "I Hate Fairyland, Vol. 1: Madly Ever After (I Hate Fairyland (Compilations) #1-5)",
+    "price": 29.17,
+    "rating": 2,
+    "category": "Sequential Art"
+  },
+  {
+    "title": "I am a Hero Omnibus Volume 1",
+    "price": 54.63,
+    "rating": 3,
+    "category": "Sequential Art"
+  },
+  {
+    "title": "Giant Days, Vol. 2 (Giant Days #5-8)",
+    "price": 22.11,
+    "rating": 2,
+    "category": "Sequential Art"
+  },
+  {
+    "title": "Danganronpa Volume 1",
+    "price": 51.99,
+    "rating": 4,
+    "category": "Sequential Art"
+  },
+  {
+    "title": "Codename Baboushka, Volume 1: The Conclave of Death",
+    "price": 36.72,
+    "rating": 4,
+    "category": "Sequential Art"
+  },
+  {
+    "title": "Camp Midnight",
+    "price": 17.08,
+    "rating": 4,
+    "category": "Sequential Art"
+  },
+  {
+    "title": "Bitch Planet, Vol. 1: Extraordinary Machine (Bitch Planet (Collected Editions))",
+    "price": 37.92,
+    "rating": 2,
+    "category": "Sequential Art"
+  },
+  {
+    "title": "The Shadow Hero (The Shadow Hero)",
+    "price": 33.14,
+    "rating": 1,
+    "category": "Sequential Art"
+  },
+  {
+    "title": "Fables, Vol. 1: Legends in Exile (Fables #1)",
+    "price": 41.62,
+    "rating": 4,
+    "category": "Sequential Art"
+  },
+  {
+    "title": "Batman: The Long Halloween (Batman)",
+    "price": 36.5,
+    "rating": 2,
+    "category": "Sequential Art"
+  },
+  {
+    "title": "Batman: The Dark Knight Returns (Batman)",
+    "price": 15.38,
+    "rating": 5,
+    "category": "Sequential Art"
+  },
+  {
+    "title": "Wonder Woman: Earth One, Volume One (Wonder Woman: Earth One #1)",
+    "price": 37.34,
+    "rating": 4,
+    "category": "Sequential Art"
+  },
+  {
+    "title": "We Are Robin, Vol. 1: The Vigilante Business (We Are Robin #1)",
+    "price": 53.9,
+    "rating": 1,
+    "category": "Sequential Art"
+  },
+  {
+    "title": "Through the Woods",
+    "price": 25.38,
+    "rating": 2,
+    "category": "Sequential Art"
+  },
+  {
+    "title": "Superman Vol. 1: Before Truth (Superman by Gene Luen Yang #1)",
+    "price": 11.89,
+    "rating": 5,
+    "category": "Sequential Art"
+  },
+  {
+    "title": "So Cute It Hurts!!, Vol. 6 (So Cute It Hurts!! #6)",
+    "price": 35.43,
+    "rating": 4,
+    "category": "Sequential Art"
+  },
+  {
+    "title": "Robin War",
+    "price": 47.82,
+    "rating": 3,
+    "category": "Sequential Art"
+  },
+  {
+    "title": "Red Hood/Arsenal, Vol. 1: Open for Business (Red Hood/Arsenal #1)",
+    "price": 25.48,
+    "rating": 2,
+    "category": "Sequential Art"
+  },
+  {
+    "title": "Naruto (3-in-1 Edition), Vol. 14: Includes Vols. 40, 41 & 42 (Naruto: Omnibus #14)",
+    "price": 38.39,
+    "rating": 2,
+    "category": "Sequential Art"
+  },
+  {
+    "title": "Lowriders to the Center of the Earth (Lowriders in Space #2)",
+    "price": 51.51,
+    "rating": 2,
+    "category": "Sequential Art"
+  },
+  {
+    "title": "El Deafo",
+    "price": 57.62,
+    "rating": 5,
+    "category": "Sequential Art"
+  },
+  {
+    "title": "Batman: Europa",
+    "price": 32.01,
+    "rating": 2,
+    "category": "Sequential Art"
+  },
+  {
+    "title": "Art Ops Vol. 1",
+    "price": 48.8,
+    "rating": 3,
+    "category": "Sequential Art"
+  },
+  {
+    "title": "Adulthood Is a Myth: A \"Sarah's Scribbles\" Collection",
+    "price": 10.9,
+    "rating": 2,
+    "category": "Sequential Art"
+  },
+  {
+    "title": "Fruits Basket, Vol. 9 (Fruits Basket #9)",
+    "price": 33.95,
+    "rating": 4,
+    "category": "Sequential Art"
+  },
+  {
+    "title": "Roller Girl",
+    "price": 14.1,
+    "rating": 5,
+    "category": "Sequential Art"
+  },
+  {
+    "title": "Fruits Basket, Vol. 7 (Fruits Basket #7)",
+    "price": 19.57,
+    "rating": 1,
+    "category": "Sequential Art"
+  },
+  {
+    "title": "Fruits Basket, Vol. 6 (Fruits Basket #6)",
+    "price": 20.96,
+    "rating": 4,
+    "category": "Sequential Art"
+  },
+  {
+    "title": "Death Note, Vol. 6: Give-and-Take (Death Note #6)",
+    "price": 36.39,
+    "rating": 3,
+    "category": "Sequential Art"
+  },
+  {
+    "title": "Fruits Basket, Vol. 5 (Fruits Basket #5)",
+    "price": 16.33,
+    "rating": 1,
+    "category": "Sequential Art"
+  },
+  {
+    "title": "Death Note, Vol. 5: Whiteout (Death Note #5)",
+    "price": 52.41,
+    "rating": 1,
+    "category": "Sequential Art"
+  },
+  {
+    "title": "The Demon Prince of Momochi House, Vol. 4 (The Demon Prince of Momochi House #4)",
+    "price": 27.88,
+    "rating": 2,
+    "category": "Sequential Art"
+  },
+  {
+    "title": "Fruits Basket, Vol. 4 (Fruits Basket #4)",
+    "price": 50.44,
+    "rating": 4,
+    "category": "Sequential Art"
+  },
+  {
+    "title": "The Wicked + The Divine, Vol. 3: Commercial Suicide (The Wicked + The Divine)",
+    "price": 14.41,
+    "rating": 3,
+    "category": "Sequential Art"
+  },
+  {
+    "title": "The Sandman, Vol. 3: Dream Country (The Sandman (volumes) #3)",
+    "price": 55.55,
+    "rating": 5,
+    "category": "Sequential Art"
+  },
+  {
+    "title": "Saga, Volume 3 (Saga (Collected Editions) #3)",
+    "price": 21.57,
+    "rating": 5,
+    "category": "Sequential Art"
+  },
+  {
+    "title": "Prodigy: The Graphic Novel (Legend: The Graphic Novel #2)",
+    "price": 43.63,
+    "rating": 3,
+    "category": "Sequential Art"
+  },
+  {
+    "title": "Persepolis: The Story of a Childhood (Persepolis #1-2)",
+    "price": 39.13,
+    "rating": 1,
+    "category": "Sequential Art"
+  },
+  {
+    "title": "Original Fake",
+    "price": 31.45,
+    "rating": 3,
+    "category": "Sequential Art"
+  },
+  {
+    "title": "Grayson, Vol 3: Nemesis (Grayson #3)",
+    "price": 42.72,
+    "rating": 1,
+    "category": "Sequential Art"
+  },
+  {
+    "title": "Fruits Basket, Vol. 3 (Fruits Basket #3)",
+    "price": 45.17,
+    "rating": 2,
+    "category": "Sequential Art"
+  },
+  {
+    "title": "Black Butler, Vol. 1 (Black Butler #1)",
+    "price": 49.31,
+    "rating": 1,
+    "category": "Sequential Art"
+  },
+  {
+    "title": "Awkward",
+    "price": 38.02,
+    "rating": 2,
+    "category": "Sequential Art"
+  },
+  {
+    "title": "The Sandman, Vol. 2: The Doll's House (The Sandman (volumes) #2)",
+    "price": 54.81,
+    "rating": 1,
+    "category": "Sequential Art"
+  },
+  {
+    "title": "Saga, Volume 2 (Saga (Collected Editions) #2)",
+    "price": 11.75,
+    "rating": 3,
+    "category": "Sequential Art"
+  },
+  {
+    "title": "Fruits Basket, Vol. 2 (Fruits Basket #2)",
+    "price": 11.64,
+    "rating": 5,
+    "category": "Sequential Art"
+  },
+  {
+    "title": "Y: The Last Man, Vol. 1: Unmanned (Y: The Last Man #1)",
+    "price": 18.51,
+    "rating": 4,
+    "category": "Sequential Art"
+  },
+  {
+    "title": "The Wicked + The Divine, Vol. 1: The Faust Act (The Wicked + The Divine)",
+    "price": 36.52,
+    "rating": 2,
+    "category": "Sequential Art"
+  },
+  {
+    "title": "The Sandman, Vol. 1: Preludes and Nocturnes (The Sandman (volumes) #1)",
+    "price": 54.12,
+    "rating": 3,
+    "category": "Sequential Art"
+  },
+  {
+    "title": "The Complete Maus (Maus #1-2)",
+    "price": 10.64,
+    "rating": 3,
+    "category": "Sequential Art"
+  },
+  {
+    "title": "Skip Beat!, Vol. 01 (Skip Beat! #1)",
+    "price": 42.12,
+    "rating": 3,
+    "category": "Sequential Art"
+  },
+  {
+    "title": "Saga, Volume 1 (Saga (Collected Editions) #1)",
+    "price": 28.48,
+    "rating": 1,
+    "category": "Sequential Art"
+  },
+  {
+    "title": "Rat Queens, Vol. 1: Sass & Sorcery (Rat Queens (Collected Editions) #1-5)",
+    "price": 46.96,
+    "rating": 5,
+    "category": "Sequential Art"
+  },
+  {
+    "title": "Paper Girls, Vol. 1 (Paper Girls #1-5)",
+    "price": 21.71,
+    "rating": 4,
+    "category": "Sequential Art"
+  },
+  {
+    "title": "Ouran High School Host Club, Vol. 1 (Ouran High School Host Club #1)",
+    "price": 29.87,
+    "rating": 3,
+    "category": "Sequential Art"
+  },
+  {
+    "title": "Ms. Marvel, Vol. 1: No Normal (Ms. Marvel (2014-2015) #1)",
+    "price": 39.39,
+    "rating": 4,
+    "category": "Sequential Art"
+  },
+  {
+    "title": "Hawkeye, Vol. 1: My Life as a Weapon (Hawkeye #1)",
+    "price": 45.24,
+    "rating": 3,
+    "category": "Sequential Art"
+  },
+  {
+    "title": "Giant Days, Vol. 1 (Giant Days #1-4)",
+    "price": 56.76,
+    "rating": 4,
+    "category": "Sequential Art"
+  },
+  {
+    "title": "Fruits Basket, Vol. 1 (Fruits Basket #1)",
+    "price": 40.28,
+    "rating": 5,
+    "category": "Sequential Art"
+  },
+  {
+    "title": "Bleach, Vol. 1: Strawberry and the Soul Reapers (Bleach #1)",
+    "price": 34.65,
+    "rating": 5,
+    "category": "Sequential Art"
+  },
+  {
+    "title": "Ajin: Demi-Human, Volume 1 (Ajin: Demi-Human #1)",
+    "price": 57.06,
+    "rating": 4,
+    "category": "Sequential Art"
+  },
+  {
+    "title": "The Secret Garden",
+    "price": 15.08,
+    "rating": 4,
+    "category": "Classics"
+  },
+  {
+    "title": "The Metamorphosis",
+    "price": 28.58,
+    "rating": 1,
+    "category": "Classics"
+  },
+  {
+    "title": "The Pilgrim's Progress",
+    "price": 50.26,
+    "rating": 2,
+    "category": "Classics"
+  },
+  {
+    "title": "The Hound of the Baskervilles (Sherlock Holmes #5)",
+    "price": 14.82,
+    "rating": 2,
+    "category": "Classics"
+  },
+  {
+    "title": "Little Women (Little Women #1)",
+    "price": 28.07,
+    "rating": 4,
+    "category": "Classics"
+  },
+  {
+    "title": "Gone with the Wind",
+    "price": 32.49,
+    "rating": 3,
+    "category": "Classics"
+  },
+  {
+    "title": "Candide",
+    "price": 58.63,
+    "rating": 3,
+    "category": "Classics"
+  },
+  {
+    "title": "Animal Farm",
+    "price": 57.22,
+    "rating": 3,
+    "category": "Classics"
+  },
+  {
+    "title": "Wuthering Heights",
+    "price": 17.73,
+    "rating": 3,
+    "category": "Classics"
+  },
+  {
+    "title": "The Picture of Dorian Gray",
+    "price": 29.7,
+    "rating": 2,
+    "category": "Classics"
+  },
+  {
+    "title": "The Complete Stories and Poems (The Works of Edgar Allan Poe [Cameo Edition])",
+    "price": 26.78,
+    "rating": 4,
+    "category": "Classics"
+  },
+  {
+    "title": "Beowulf",
+    "price": 38.35,
+    "rating": 2,
+    "category": "Classics"
+  },
+  {
+    "title": "And Then There Were None",
+    "price": 35.01,
+    "rating": 2,
+    "category": "Classics"
+  },
+  {
+    "title": "The Story of Hong Gildong",
+    "price": 43.19,
+    "rating": 4,
+    "category": "Classics"
+  },
+  {
+    "title": "The Little Prince",
+    "price": 45.42,
+    "rating": 2,
+    "category": "Classics"
+  },
+  {
+    "title": "Sense and Sensibility",
+    "price": 37.46,
+    "rating": 1,
+    "category": "Classics"
+  },
+  {
+    "title": "Of Mice and Men",
+    "price": 47.11,
+    "rating": 2,
+    "category": "Classics"
+  },
+  {
+    "title": "Emma",
+    "price": 32.93,
+    "rating": 2,
+    "category": "Classics"
+  },
+  {
+    "title": "Alice in Wonderland (Alice's Adventures in Wonderland #1)",
+    "price": 55.53,
+    "rating": 1,
+    "category": "Classics"
+  }
+]

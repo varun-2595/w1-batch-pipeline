@@ -1,0 +1,657 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Batch Pipeline Execution Summary - 2026-05-25</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --bg-dark: #0a0b10;
+            --panel-bg: rgba(18, 20, 32, 0.6);
+            --border-color: rgba(255, 255, 255, 0.08);
+            
+            --accent-primary: #6366f1; /* Indigo */
+            --accent-purple: #a855f7;
+            --accent-cyan: #06b6d4;
+            --accent-red: #ef4444;
+            --accent-green: #10b981;
+            
+            --text-primary: #f3f4f6;
+            --text-secondary: #9ca3af;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: var(--bg-dark);
+            background-image: 
+                radial-gradient(at 0% 0%, rgba(99, 102, 241, 0.1) 0px, transparent 50%),
+                radial-gradient(at 100% 100%, rgba(168, 85, 247, 0.1) 0px, transparent 50%);
+            color: var(--text-primary);
+            font-family: 'Outfit', sans-serif;
+            min-height: 100vh;
+            padding: 2rem 1.5rem;
+            line-height: 1.5;
+        }
+
+        h1, h2, h3, h4 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-weight: 700;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* Header Styling */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2.5rem;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 1.5rem;
+        }
+
+        .title-area h1 {
+            font-size: 2.2rem;
+            background: linear-gradient(135deg, #fff 0%, #a855f7 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            letter-spacing: -0.5px;
+        }
+
+        .title-area p {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            margin-top: 0.25rem;
+        }
+
+        .meta-badge {
+            background: rgba(99, 102, 241, 0.1);
+            border: 1px solid rgba(99, 102, 241, 0.2);
+            border-radius: 99px;
+            padding: 0.5rem 1.2rem;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+        }
+
+        .meta-badge .run-id {
+            font-family: monospace;
+            font-size: 0.8rem;
+            color: var(--accent-cyan);
+        }
+
+        .meta-badge .run-date {
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+
+        /* Grid Layouts */
+        .metrics-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2.5rem;
+        }
+
+        .dashboard-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 2rem;
+            margin-bottom: 2.5rem;
+        }
+
+        @media (max-width: 900px) {
+            .dashboard-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Glassmorphic Panel */
+        .panel {
+            background: var(--panel-bg);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            padding: 1.5rem;
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .panel:hover {
+            box-shadow: 0 8px 32px 0 rgba(99, 102, 241, 0.05);
+        }
+
+        .panel-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.25rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            padding-bottom: 0.75rem;
+        }
+
+        .panel-header h2 {
+            font-size: 1.25rem;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .panel-header h2::before {
+            content: '';
+            display: inline-block;
+            width: 4px;
+            height: 18px;
+            background: var(--accent-primary);
+            border-radius: 2px;
+        }
+
+        /* Stat Cards */
+        .stat-card {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .stat-card::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+        }
+
+        .stat-card.scraped::after { background: var(--accent-cyan); }
+        .stat-card.clean::after { background: var(--accent-green); }
+        .stat-card.rejected::after { background: var(--accent-red); }
+
+        .stat-label {
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--text-secondary);
+            font-weight: 500;
+        }
+
+        .stat-value {
+            font-size: 2.5rem;
+            font-weight: 700;
+            font-family: 'Space Grotesk', sans-serif;
+            line-height: 1.2;
+            margin: 0.25rem 0;
+        }
+
+        .stat-details {
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+            display: flex;
+            justify-content: space-between;
+            margin-top: 0.5rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.03);
+            padding-top: 0.5rem;
+        }
+
+        /* Table Styling */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            text-align: left;
+            font-size: 0.9rem;
+        }
+
+        th {
+            font-family: 'Space Grotesk', sans-serif;
+            color: var(--text-secondary);
+            font-weight: 600;
+            padding: 0.75rem 1rem;
+            border-bottom: 2px solid rgba(255, 255, 255, 0.05);
+            text-transform: uppercase;
+            font-size: 0.75rem;
+            letter-spacing: 0.5px;
+        }
+
+        td {
+            padding: 0.85rem 1rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+            color: var(--text-secondary);
+        }
+
+        tr:hover td {
+            color: var(--text-primary);
+            background: rgba(255, 255, 255, 0.01);
+        }
+
+        /* Helpers & Badges */
+        .text-right { text-align: right; }
+        .text-center { text-align: center; }
+        .font-mono { font-family: monospace; }
+        .font-medium { font-weight: 500; }
+        .text-white { color: #fff; }
+        .text-accent-cyan { color: var(--accent-cyan); }
+        .text-accent-purple { color: var(--accent-purple); }
+        .text-accent-red { color: var(--accent-red); }
+        .text-success { color: var(--accent-green); }
+
+        .badge {
+            display: inline-block;
+            padding: 0.25rem 0.6rem;
+            border-radius: 6px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .status-success {
+            background: rgba(16, 185, 129, 0.1);
+            color: var(--accent-green);
+            border: 1px solid rgba(16, 185, 129, 0.2);
+        }
+
+        .status-failure {
+            background: rgba(239, 68, 68, 0.1);
+            color: var(--accent-red);
+            border: 1px solid rgba(239, 68, 68, 0.2);
+        }
+
+        .rating-stars {
+            color: #fbbf24; /* Amber star colors */
+            font-size: 1rem;
+            letter-spacing: -2px;
+        }
+
+        /* Reject details */
+        .reject-table-section {
+            margin-bottom: 2rem;
+        }
+
+        .reject-table-section h3 {
+            font-size: 1.05rem;
+            margin-bottom: 0.75rem;
+            color: var(--text-primary);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .reject-table-section h3::after {
+            content: '';
+            flex-grow: 1;
+            height: 1px;
+            background: rgba(255,255,255,0.05);
+            margin-left: 0.5rem;
+        }
+
+        .max-w-xs { max-width: 200px; }
+        .max-w-md { max-width: 350px; }
+        .truncate {
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header>
+            <div class="title-area">
+                <h1>Batch Pipeline Summary</h1>
+                <p>Cloud-First Data Engineer Weekly Technical Breakdown - Week 1</p>
+            </div>
+            <div class="meta-badge">
+                <span class="run-date">2026-05-25</span>
+                <span class="run-id">ID: local_sim_20260525T212055</span>
+            </div>
+        </header>
+
+        <!-- KPI Cards -->
+        <section class="metrics-grid">
+            <!-- Scraped Card -->
+            <div class="panel stat-card scraped">
+                <div class="stat-label">Total Records Scraped</div>
+                <div class="stat-value text-accent-cyan">193</div>
+                <div class="stat-details">
+                    <span>Books: 163</span>
+                    <span>Quotes: 30</span>
+                </div>
+            </div>
+
+            <!-- Clean / Ingested Card -->
+            <div class="panel stat-card clean">
+                <div class="stat-label">Validated &amp; Loaded</div>
+                <div class="stat-value text-success">192</div>
+                <div class="stat-details">
+                    <span>Books: 163</span>
+                    <span>Quotes: 29</span>
+                </div>
+            </div>
+
+            <!-- Rejected Card -->
+            <div class="panel stat-card rejected">
+                <div class="stat-label">Quarantined / Rejected</div>
+                <div class="stat-value text-accent-red">1</div>
+                <div class="stat-details">
+                    <span>Books: 0</span>
+                    <span>Quotes: 1</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Mid section: Category analytical tables and Author stats -->
+        <section class="dashboard-grid">
+            <!-- Left panel: Book Categories -->
+            <div class="panel">
+                <div class="panel-header">
+                    <h2>Top Book Categories</h2>
+                </div>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Category</th>
+                            <th class="text-right">Books Count</th>
+                            <th class="text-right">Average Price</th>
+                            <th class="text-right">Average Rating</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        
+        <tr>
+            <td class="font-medium text-white">Sequential Art</td>
+            <td class="text-right">75</td>
+            <td class="text-right text-accent-cyan">£34.57</td>
+            <td class="text-right">
+                <span class="rating-stars">★★★</span>
+                <span class="text-gray-500 font-mono">(3.0)</span>
+            </td>
+        </tr>
+        
+        <tr>
+            <td class="font-medium text-white">Mystery</td>
+            <td class="text-right">32</td>
+            <td class="text-right text-accent-cyan">£31.72</td>
+            <td class="text-right">
+                <span class="rating-stars">★★★</span>
+                <span class="text-gray-500 font-mono">(2.9)</span>
+            </td>
+        </tr>
+        
+        <tr>
+            <td class="font-medium text-white">Historical Fiction</td>
+            <td class="text-right">26</td>
+            <td class="text-right text-accent-cyan">£33.64</td>
+            <td class="text-right">
+                <span class="rating-stars">★★★</span>
+                <span class="text-gray-500 font-mono">(3.2)</span>
+            </td>
+        </tr>
+        
+        <tr>
+            <td class="font-medium text-white">Classics</td>
+            <td class="text-right">19</td>
+            <td class="text-right text-accent-cyan">£36.55</td>
+            <td class="text-right">
+                <span class="rating-stars">★★</span>
+                <span class="text-gray-500 font-mono">(2.5)</span>
+            </td>
+        </tr>
+        
+        <tr>
+            <td class="font-medium text-white">Travel</td>
+            <td class="text-right">11</td>
+            <td class="text-right text-accent-cyan">£39.79</td>
+            <td class="text-right">
+                <span class="rating-stars">★★★</span>
+                <span class="text-gray-500 font-mono">(2.7)</span>
+            </td>
+        </tr>
+        
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- Right panel: Top Authors -->
+            <div class="panel">
+                <div class="panel-header">
+                    <h2>Top Quoted Authors</h2>
+                </div>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Author</th>
+                            <th class="text-right">Quotes</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        
+        <tr>
+            <td class="font-medium text-white">Albert Einstein</td>
+            <td class="text-right font-mono text-accent-purple font-bold">6</td>
+        </tr>
+        
+        <tr>
+            <td class="font-medium text-white">J.K. Rowling</td>
+            <td class="text-right font-mono text-accent-purple font-bold">3</td>
+        </tr>
+        
+        <tr>
+            <td class="font-medium text-white">Bob Marley</td>
+            <td class="text-right font-mono text-accent-purple font-bold">2</td>
+        </tr>
+        
+        <tr>
+            <td class="font-medium text-white">Dr. Seuss</td>
+            <td class="text-right font-mono text-accent-purple font-bold">2</td>
+        </tr>
+        
+        <tr>
+            <td class="font-medium text-white">Allen Saunders</td>
+            <td class="text-right font-mono text-accent-purple font-bold">1</td>
+        </tr>
+        
+        <tr>
+            <td class="font-medium text-white">André Gide</td>
+            <td class="text-right font-mono text-accent-purple font-bold">1</td>
+        </tr>
+        
+        <tr>
+            <td class="font-medium text-white">Douglas Adams</td>
+            <td class="text-right font-mono text-accent-purple font-bold">1</td>
+        </tr>
+        
+        <tr>
+            <td class="font-medium text-white">Eleanor Roosevelt</td>
+            <td class="text-right font-mono text-accent-purple font-bold">1</td>
+        </tr>
+        
+        <tr>
+            <td class="font-medium text-white">Elie Wiesel</td>
+            <td class="text-right font-mono text-accent-purple font-bold">1</td>
+        </tr>
+        
+        <tr>
+            <td class="font-medium text-white">Friedrich Nietzsche</td>
+            <td class="text-right font-mono text-accent-purple font-bold">1</td>
+        </tr>
+        
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- Lower Section: Execution Logs and Quarantine summary -->
+        <section class="dashboard-grid">
+            <!-- Left: Execution Log -->
+            <div class="panel">
+                <div class="panel-header">
+                    <h2>Pipeline Execution Logs</h2>
+                </div>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Pipeline Stage</th>
+                            <th class="text-center">Status</th>
+                            <th class="text-right">Records</th>
+                            <th class="text-right">Timestamp</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        
+        <tr>
+            <td class="font-mono text-white text-xs">dag_start</td>
+            <td class="text-center">
+                <span class="badge status-success">Success</span>
+            </td>
+            <td class="text-right font-mono">0</td>
+            <td class="text-right text-gray-400 font-mono text-xs">2026-05-25 15:50:18</td>
+        </tr>
+        
+        <tr>
+            <td class="font-mono text-white text-xs">load_books</td>
+            <td class="text-center">
+                <span class="badge status-success">Success</span>
+            </td>
+            <td class="text-right font-mono">163</td>
+            <td class="text-right text-gray-400 font-mono text-xs">2026-05-25 15:50:42</td>
+        </tr>
+        
+        <tr>
+            <td class="font-mono text-white text-xs">load_quotes</td>
+            <td class="text-center">
+                <span class="badge status-success">Success</span>
+            </td>
+            <td class="text-right font-mono">29</td>
+            <td class="text-right text-gray-400 font-mono text-xs">2026-05-25 15:50:42</td>
+        </tr>
+        
+        <tr>
+            <td class="font-mono text-white text-xs">transform</td>
+            <td class="text-center">
+                <span class="badge status-success">Success</span>
+            </td>
+            <td class="text-right font-mono">4</td>
+            <td class="text-right text-gray-400 font-mono text-xs">2026-05-25 15:50:42</td>
+        </tr>
+        
+        <tr>
+            <td class="font-mono text-white text-xs">report</td>
+            <td class="text-center">
+                <span class="badge status-success">Success</span>
+            </td>
+            <td class="text-right font-mono">1</td>
+            <td class="text-right text-gray-400 font-mono text-xs">2026-05-25 15:50:42</td>
+        </tr>
+        
+        <tr>
+            <td class="font-mono text-white text-xs">dag_end</td>
+            <td class="text-center">
+                <span class="badge status-success">Success</span>
+            </td>
+            <td class="text-right font-mono">0</td>
+            <td class="text-right text-gray-400 font-mono text-xs">2026-05-25 15:50:42</td>
+        </tr>
+        
+        <tr>
+            <td class="font-mono text-white text-xs">dag_start</td>
+            <td class="text-center">
+                <span class="badge status-success">Success</span>
+            </td>
+            <td class="text-right font-mono">0</td>
+            <td class="text-right text-gray-400 font-mono text-xs">2026-05-25 15:50:55</td>
+        </tr>
+        
+        <tr>
+            <td class="font-mono text-white text-xs">load_books</td>
+            <td class="text-center">
+                <span class="badge status-success">Success</span>
+            </td>
+            <td class="text-right font-mono">163</td>
+            <td class="text-right text-gray-400 font-mono text-xs">2026-05-25 15:51:18</td>
+        </tr>
+        
+        <tr>
+            <td class="font-mono text-white text-xs">load_quotes</td>
+            <td class="text-center">
+                <span class="badge status-success">Success</span>
+            </td>
+            <td class="text-right font-mono">29</td>
+            <td class="text-right text-gray-400 font-mono text-xs">2026-05-25 15:51:18</td>
+        </tr>
+        
+        <tr>
+            <td class="font-mono text-white text-xs">transform</td>
+            <td class="text-center">
+                <span class="badge status-success">Success</span>
+            </td>
+            <td class="text-right font-mono">4</td>
+            <td class="text-right text-gray-400 font-mono text-xs">2026-05-25 15:51:18</td>
+        </tr>
+        
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- Right: Quarantine Summary Panel -->
+            <div class="panel">
+                <div class="panel-header">
+                    <h2>Quarantine (Reject Samples)</h2>
+                </div>
+                
+                <div class="reject-table-section">
+                    <h3>Rejected Books Sample (0 total)</h3>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Title</th>
+                                <th>Category</th>
+                                <th class="text-right">Price</th>
+                                <th>Reason</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr><td colspan='4' class='text-center text-success font-semibold py-4'>✓ No books rejected during this run!</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="reject-table-section">
+                    <h3>Rejected Quotes Sample (1 total)</h3>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Quote</th>
+                                <th>Author</th>
+                                <th>Reason</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            
+        <tr>
+            <td class="font-medium text-white max-w-md truncate" title="This life is what you make it. No matter what, you're going to mess up sometimes, it's a universal truth. But the good part is you get to decide how you're going to mess it up. Girls will be your friends - they'll act like it anyway. But just remember, some come, some go. The ones that stay with you through everything - they're your true best friends. Don't let go of them. Also remember, sisters make the best friends in the world. As for lovers, well, they'll come and go too. And baby, I hate to say it, most of them - actually pretty much all of them are going to break your heart, but you can't give up because if you give up, you'll never find your soulmate. You'll never find that half who makes you whole and that goes for everything. Just because you fail once, doesn't mean you're gonna fail at everything. Keep trying, hold on, and always, always, always believe in yourself, because if you don't, then who will, sweetie? So keep your head high, keep your chin up, and most importantly, keep smiling, because life's a beautiful thing and there's so much to smile about.">This life is what you make it. No matter what, you're going to mess up sometimes, it's a universal truth. But the good part is you get to decide how you're going to mess it up. Girls will be your friends - they'll act like it anyway. But just remember, some come, some go. The ones that stay with you through everything - they're your true best friends. Don't let go of them. Also remember, sisters make the best friends in the world. As for lovers, well, they'll come and go too. And baby, I hate to say it, most of them - actually pretty much all of them are going to break your heart, but you can't give up because if you give up, you'll never find your soulmate. You'll never find that half who makes you whole and that goes for everything. Just because you fail once, doesn't mean you're gonna fail at everything. Keep trying, hold on, and always, always, always believe in yourself, because if you don't, then who will, sweetie? So keep your head high, keep your chin up, and most importantly, keep smiling, because life's a beautiful thing and there's so much to smile about.</td>
+            <td>Marilyn Monroe</td>
+            <td class="text-accent-red text-xs font-semibold">Quote length exceeds 1000 chars (length: 1082)</td>
+        </tr>
+        
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+    </div>
+</body>
+</html>
