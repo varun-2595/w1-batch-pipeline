@@ -12,9 +12,16 @@ def run_transformations(dag_run_id=None):
     logger.info("Starting database transformations to build analytical views")
     engine = get_db_engine()
     
+    # Drop existing views in reverse dependency order first (so views depending on others are dropped first)
+    drop_queries = [
+        "DROP VIEW IF EXISTS view_category_metrics",
+        "DROP VIEW IF EXISTS view_author_metrics",
+        "DROP VIEW IF EXISTS view_books_cleaned",
+        "DROP VIEW IF EXISTS view_quotes_cleaned"
+    ]
+    
     transform_queries = {
         "view_books_cleaned": """
-            DROP VIEW IF EXISTS view_books_cleaned;
             CREATE VIEW view_books_cleaned AS
             WITH ranked_books AS (
                 SELECT 
@@ -27,7 +34,6 @@ def run_transformations(dag_run_id=None):
             WHERE rn = 1;
         """,
         "view_quotes_cleaned": """
-            DROP VIEW IF EXISTS view_quotes_cleaned;
             CREATE VIEW view_quotes_cleaned AS
             WITH ranked_quotes AS (
                 SELECT 
@@ -40,7 +46,6 @@ def run_transformations(dag_run_id=None):
             WHERE rn = 1;
         """,
         "view_category_metrics": """
-            DROP VIEW IF EXISTS view_category_metrics;
             CREATE VIEW view_category_metrics AS
             SELECT 
                 category,
@@ -53,7 +58,6 @@ def run_transformations(dag_run_id=None):
             GROUP BY category;
         """,
         "view_author_metrics": """
-            DROP VIEW IF EXISTS view_author_metrics;
             CREATE VIEW view_author_metrics AS
             SELECT 
                 author,
@@ -68,15 +72,15 @@ def run_transformations(dag_run_id=None):
     stages_completed = 0
     try:
         with engine.begin() as conn:
+            # 1. Drop views in reverse dependency order
+            logger.info("Dropping existing views...")
+            for drop_q in drop_queries:
+                conn.execute(text(drop_q))
+                
+            # 2. Create views in forward dependency order
             for view_name, query in transform_queries.items():
                 logger.info(f"Creating analytical view: {view_name}")
-                # SQLAlchemy executing multiple statements inside one text block
-                # SQLite can handle multiple queries in execute if it's script,
-                # but to be safe, we split by semicolon if SQLite is used or execute individually.
-                # Actually, running DROP and CREATE separately is safest across all DBs.
-                statements = [stmt.strip() for stmt in query.split(";") if stmt.strip()]
-                for stmt in statements:
-                    conn.execute(text(stmt))
+                conn.execute(text(query))
                 stages_completed += 1
                 
         log_pipeline_stage(engine, "transform", "Success", stages_completed, dag_run_id=dag_run_id)
