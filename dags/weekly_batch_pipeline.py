@@ -15,7 +15,7 @@ default_args = {
 
 def scrape_stage(**kwargs):
     """Stage 1: Scrape raw books and quotes data."""
-    ds = kwargs.get("ds")
+    ds = datetime.now().strftime("%Y-%m-%d")
     os.environ["SCRAPE_DATE"] = ds
     
     from src.scraper import run_scraper
@@ -25,7 +25,7 @@ def scrape_stage(**kwargs):
 
 def validate_stage(**kwargs):
     """Stage 2: Run validation and filter rejects."""
-    ds = kwargs.get("ds")
+    ds = datetime.now().strftime("%Y-%m-%d")
     os.environ["SCRAPE_DATE"] = ds
     
     from src.validator import run_validation
@@ -34,7 +34,7 @@ def validate_stage(**kwargs):
 
 def upload_s3_stage(**kwargs):
     """Stage 3: Format clean data to Parquet and upload to MinIO/S3."""
-    ds = kwargs.get("ds")
+    ds = datetime.now().strftime("%Y-%m-%d")
     os.environ["SCRAPE_DATE"] = ds
     
     from src.validator import validate_books, validate_quotes
@@ -50,7 +50,7 @@ def upload_s3_stage(**kwargs):
 
 def load_pg_stage(**kwargs):
     """Stage 4: Ingest Parquet data from S3 into PostgreSQL raw tables."""
-    ds = kwargs.get("ds")
+    ds = datetime.now().strftime("%Y-%m-%d")
     run_id = kwargs.get("run_id")
     os.environ["SCRAPE_DATE"] = ds
     
@@ -85,7 +85,7 @@ def load_pg_stage(**kwargs):
 
 def transform_stage(**kwargs):
     """Stage 5: Build analytical views and generate HTML summary report."""
-    ds = kwargs.get("ds")
+    ds = datetime.now().strftime("%Y-%m-%d")
     run_id = kwargs.get("run_id")
     os.environ["SCRAPE_DATE"] = ds
     
